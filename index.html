@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<style type="text/css">
+		html{
+			height: 100%;
+			margin: 0;
+		}
+		body{
+			height: 100%;
+			margin: 0;
+		}
+		p{
+			font-size: 
+		}
+		#left{
+			height: 99%;
+			width: 20%;
+			display: inline-block;
+			position: relative;
+			float: left;
+			border: 1px solid;
+		}
+		#left1
+		{
+			height: 33%;
+			width: 99%;
+			display: block;
+			margin: 0 0 10px 0;
+			/*position: relative;*/
+			/*border: 1px solid;*/
+		}
+		#left2
+		{
+			height: 33%;
+			width: 99%;
+			display: block;
+			/*position: relative;*/
+			/*border: 1px solid;*/
+		}
+		#left3
+		{
+			height: 33%;
+			width: 99%;
+			display: block;
+			/*position: relative;*/
+			/*border: 1px solid;*/
+		}
+		#mid
+		{
+			height: 99%;
+			width: 50%;
+			display: inline-block;
+			position: relative;
+			float: left;
+			/* margin: 0px ,10px; */
+			border: 1px solid;
+		}
+		#right{
+			height: 99%;
+			width: 29.5%;
+			float: right;
+			display: inline-block;
+			position: relative;
+			border: 1px solid;
+		}
+		#right1
+		{
+			height: 49%;
+			width: 100%;
+			display: block;
+			/*border: 1px solid;*/
+		}
+		#right2
+		{
+			height: 49%;
+			width: 100%;
+			display: block;
+			/*border: 1px solid;*/
+		}
+		#left1_title,#left2_title,#left3_title,#right1_title,#right2_title,#mid_tittle{
+			/*float: left;*/
+			/*position: absolute;*/
+			border: 1px solid;
+			margin: 2px 0px;
+			padding: 1px 0px;
+			border-radius: 5px;
+			box-shadow: 3px 3px 2px #c6c6c6;
+		}
+		#tsne{
+			height: 500px;
+			width: 500px;
+		}
+		#heatmap{
+			height: 370px;
+			width: 450px;
+		}
+		.information{
+			background: #c6c6c6;
+		}
+		p{
+			font-size: 10pt;
+		}
+	</style>
+	<title>暑期实践</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <link rel="stylesheet" href="css/main.css"> -->
+	<link rel="stylesheet" href="css/rangeslider.css">
+
+</head>
+<body>
+	
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="js/heatmap.min.js"></script>
+	
+	<script src="http://www.jq22.com/jquery/1.9.1/jquery.min.js"></script>
+	<script src="js/rangeslider.min.js"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.5.1/pixi.min.js"></script>
+	<script src="js/data.js"></script>
+	<script src="js/t_SNE.js"></script>
+	<script src="js/jquery_s.js"></script>
+	<script src="js/heatmap.js"></script>
+	<script src="js/force_pixi.js"></script>
+	<div id = "left">
+		<!-- LEFT -->
+		<div id = "left1">
+			<div id = "left1_title"> Control Panel</div>
+			<div class = "information">
+				<p>Graph Nodes:11174</p>
+				<p>Graph Edegs:23410</p>
+				<p>Sampling Nodes:</p>
+				<p>Sampling Edegs:</p>
+			</div>
+			<select style="margin-left: 50px; float: left;">
+				<option value="Sampling">SRW</option>
+				<option value="Sampling">ISRW</option>
+				<option value="Sampling">RNS</option>
+				<option value="Sampling">RJ</option>
+				<option value="Sampling">RES</option>
+				<option value="Sampling">TIES</option>
+				<option value="Sampling">BFS</option>
+				<option value="Sampling">DFS</option>
+			</select>
+			<button type="button" style="margin: 0px 30px;">Sample</button>
+			<div class="samplingIfm">
+				<p>Sampling Rate:
+					<input type="range" name="max" min ="0%" max = "100%" value="20" data-rangeslider><output></output>
+				</p>
+				<p>Max Threshold: 
+					<input type="range" name="max" min ="0%" max = "100%" value="30" data-rangeslider><output></output>
+				</p>
+				<p>Min Threshold:
+					<input type="range" name="min" min ="0%" max = "100%" value="10" data-rangeslider><output></output>
+				</p>	
+			</div>		
+		</div>
+		<div id = "left2">
+			<div id = "left2_title">l2</div>
+		</div>
+		<div id = left3>
+			<div id = "left3_title">l3</div>
+		</div>
+		
+	</div>
+
+	<div id = "mid">
+		<div id = "mid_tittle">
+			 Network
+		<select style="margin-right: 8px; float: right;">
+			<option value="community">Community</option>
+		</select>
+		</div>
+	</div>
+
+	<div id = "right">
+		<!-- RIGHT -->
+		<div id = "right1">
+			<div id = "right1_title"> T-SNE</div>
+		</div>
+		<div id = "right2">
+			<div id = "right2_title">Heatmap</div>
+			<div id = "heatmap"></div>
+		</div>
+	</div>
+	
+</body>
+</html>
