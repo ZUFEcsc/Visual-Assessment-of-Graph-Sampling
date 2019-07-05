@@ -1,4 +1,3 @@
-
 html{
     height: 100%;
     margin: 0;
@@ -24,24 +23,18 @@ p{
     width: 99%;
     display: block;
     margin: 0 0 10px 0;
-    /*position: relative;*/
-    /*border: 1px solid;*/
 }
 #left2
 {
     height: 33%;
     width: 99%;
     display: block;
-    /*position: relative;*/
-    /*border: 1px solid;*/
 }
 #left3
 {
     height: 33%;
     width: 99%;
     display: block;
-    /*position: relative;*/
-    /*border: 1px solid;*/
 }
 #mid
 {
@@ -50,7 +43,6 @@ p{
     display: inline-block;
     position: relative;
     float: left;
-    /* margin: 0px ,10px; */
     border: 1px solid;
 }
 #right{
@@ -66,18 +58,14 @@ p{
     height: 49%;
     width: 100%;
     display: block;
-    /*border: 1px solid;*/
 }
 #right2
 {
     height: 49%;
     width: 100%;
     display: block;
-    /*border: 1px solid;*/
 }
 #left1_title,#left2_title,#left3_title,#right1_title,#right2_title,#mid_tittle{
-    /*float: left;*/
-    /*position: absolute;*/
     border: 1px solid;
     margin: 2px 0px;
     padding: 1px 0px;

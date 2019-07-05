@@ -3,16 +3,6 @@ d3.csv("data/kde_5000/oregonf_TSNE_exponential_id_x_y_kde.csv",function(error,da
 
     Data = data;
 
-    // d3.csv("data/oregonf_TSNE_5000.csv",function(error,nodedata){
-    //     for( var i = 0 ; i < nodedata.length ; i++){
-    //         heatmapData.push({
-    //             id:parseInt(nodedata[i].id),
-    //             x:parseFloat(nodedata[i].x),
-    //             y:parseFloat(nodedata[i].y)
-    //         })
-    //     }
-    // })
-
     for(var i=0;i<Data.length;i++){
         heatmapData.push({
             id:parseInt(Data[i].id),
@@ -51,13 +41,8 @@ d3.csv("data/kde_5000/oregonf_TSNE_exponential_id_x_y_kde.csv",function(error,da
     };
     var heatmapInstance = h337.create({
         container: document.querySelector('#heatmap'),
-        // radius: 8,
-        // // opacity:.6,
-        // maxOpacity:.9,
-        // blur: 1,
         radius: 9.5,
         maxOpacity: .9,
-        // minOpacity: 0,
         blur: 1
     });
 
