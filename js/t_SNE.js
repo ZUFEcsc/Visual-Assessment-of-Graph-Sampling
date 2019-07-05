@@ -1,5 +1,5 @@
 
-d3.csv("data/oregonf_TSNE_id_x_y_new.csv",function(error,data_node){
+d3.csv("data/oregonf_TSNE_5000.csv",function(error,data_node){
     tsneData = data_node;
     
     console.log(data_node);
@@ -29,11 +29,6 @@ d3.csv("data/oregonf_TSNE_id_x_y_new.csv",function(error,data_node){
     var yScale = d3.scaleLinear()
                     .domain([y_min,y_max])
                     .range([10,350]);
-
-    // for(var i = 0 ; i < tsneData.length; i++){
-    // 	tsneData[i].x = parseInt(xScale(tsneData[i].x));
-    // 	tsneData[i].y = parseInt(yScale(tsneData[i].y));
-    //  }
 
     var tsne_height = 350;
     var tsne_width = 450;

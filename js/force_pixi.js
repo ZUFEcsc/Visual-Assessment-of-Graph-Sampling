@@ -52,7 +52,6 @@ d3.csv("data/oregonf.csv",function(error,data){
 
                                 const lines = new PIXI.Graphics();
                                 for(var i = 0 ; i < links.length ; i++){
-                                    // grapghics.beginFill(0xffffff);
                                     lines.lineStyle(0.4,0xc6c6c6,1);
                                     lines.moveTo(links[i].source.x,links[i].source.y);
                                     lines.lineTo(links[i].target.x,links[i].target.y);

@@ -1,11 +1,24 @@
-heatmapData = []
-d3.csv("data/oregonf_TSNE_id_x_y_new.csv",function(error,data){
+var heatmapData = []
+d3.csv("data/kde_5000/oregonf_TSNE_exponential_id_x_y_kde.csv",function(error,data){
+
     Data = data;
+
+    // d3.csv("data/oregonf_TSNE_5000.csv",function(error,nodedata){
+    //     for( var i = 0 ; i < nodedata.length ; i++){
+    //         heatmapData.push({
+    //             id:parseInt(nodedata[i].id),
+    //             x:parseFloat(nodedata[i].x),
+    //             y:parseFloat(nodedata[i].y)
+    //         })
+    //     }
+    // })
+
     for(var i=0;i<Data.length;i++){
         heatmapData.push({
-            id:Data[i].id,
+            id:parseInt(Data[i].id),
             x:parseFloat(Data[i].x),
-            y:parseFloat(Data[i].y)
+            y:parseFloat(Data[i].y),
+            value:parseFloat(Data[i].kde)
         });
     }
     
@@ -38,16 +51,15 @@ d3.csv("data/oregonf_TSNE_id_x_y_new.csv",function(error,data){
     };
     var heatmapInstance = h337.create({
         container: document.querySelector('#heatmap'),
-        radius: 8,
-        // opacity:.45,
-        maxOpacity: .3,
-        // minOpacity: .2,
-        blur: 1,
+        // radius: 8,
+        // // opacity:.6,
+        // maxOpacity:.9,
+        // blur: 1,
+        radius: 9.5,
+        maxOpacity: .9,
+        // minOpacity: 0,
+        blur: 1
     });
-
-    // var MAX = d3.max(DATA,function(d){
-    //     return d.value;
-    // })
 
     var data = { 
     max: 0,
@@ -55,7 +67,6 @@ d3.csv("data/oregonf_TSNE_id_x_y_new.csv",function(error,data){
     };
 
     heatmapInstance.setData(data);
-    // console.log(data)
 
     var currentData = heatmapInstance.getData();
 
@@ -63,46 +74,9 @@ d3.csv("data/oregonf_TSNE_id_x_y_new.csv",function(error,data){
         var dataPoint = {
             x:heatmapData[i].x,
             y:heatmapData[i].y,
-            value:heatmapData[i].id
+            value:heatmapData[i].value
         };
         heatmapInstance.addData(dataPoint);
     }
     console.log(currentData);
 })
-    
-// document.getElementById("heatmap").style.display = "block";
-
-
-// var heatmapInstance = h337.create({
-// 	container: document.querySelector('#heatmap'),
-// 	radius: 80,
-// 	maxOpacity: .9,
-// 	// minOpacity: .2,
-// 	blur: 0.85,
-// });
-
-// var points = [];
-// var max = 0;
-// var heatmapWidth = document.body.clientWidth;
-// var heitmapHeight = document.body.clientHeight;
-// // var len = 300;
-// for(var i = 0 ; i < nodeData.length ; i++){
-// 	// var val = Math.floor(Math.random()*100);
-// 	var val = nodeData[i].id;
-// 	max = Math.max(max, val);
-// 	var point = {
-// 		x: nodeData[i].x,
-// 		y: nodeData[i].y,
-// 		value: val
-// 	};
-// 	points.push(point);
-// }
-// 	var data = {
-// 	max: max,
-// 	data: points
-// };
-
-// //因为data是一组数据,web切图报价所以直接setData
-// heatmapInstance.setData(data); //数据绑定还可以使用
-// var currentData = heatmapInstance.getData();
-// console.log(currentData);

@@ -1,6 +1,6 @@
 var nodeData = [] ;
 var forceData = [] ;
-d3.csv("data/oregonf_TSNE_id_x_y_new.csv",function(error,data){
+d3.csv("data/oregonf_TSNE_5000.csv",function(error,data){
     Data = data;
     for(var i=0;i<Data.length;i++){
         nodeData.push({
