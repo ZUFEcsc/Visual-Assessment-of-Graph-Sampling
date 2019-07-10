@@ -1,3 +1,10 @@
+/*
+ * @Author: ChenShan
+ * @Date: 2019-07-05 16:29:49 
+ * @Last Modified by: ChenShan
+ * @Last Modified time: 2019-07-09 11:48:29
+ */
+
 forceData = [];
 var forcelineWidth = 1;
 var forceLineColor = "#c6c6c6";
@@ -10,8 +17,11 @@ var unselecetedColor = "#0000ff";
 var force_height = 755;
 var force_width = 760;
 const app = new PIXI.Application({
-    //  antialias: true, width: force_width,height: force_height,backgroundColor: 0xffffff,
-    antialias: true,width: force_width, height: force_height, backgroundColor: 0xffffff,
+    antialias: true,
+    width: force_width,
+    height: force_height,
+    backgroundColor: 0xffffff,
+    resolution:1
      });
 
 d3.csv("data/oregonf.csv",function(error,data){
@@ -24,9 +34,7 @@ d3.csv("data/oregonf.csv",function(error,data){
             source:parseInt(Data[i].source),
             target:parseInt(Data[i].target)
         });
-
     }
-    console.log(forceData);
 
         var nodesId = [];
         for (var i = 0 ; i < nodeData.length ; i++){
@@ -68,5 +76,5 @@ d3.csv("data/oregonf.csv",function(error,data){
                                 
                                 console.log("end")
                             })
-       
+                            
 })

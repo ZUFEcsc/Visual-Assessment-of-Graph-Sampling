@@ -1,3 +1,10 @@
+/*
+ * @Author: ChenShan 
+ * @Date: 2019-07-05 16:33:17 
+ * @Last Modified by: ChenShan
+ * @Last Modified time: 2019-07-08 16:27:13
+ */
+
 forceData = [];
 
 d3.csv("data/oregonf.csv",function(error,data){
@@ -5,7 +12,7 @@ d3.csv("data/oregonf.csv",function(error,data){
     var forceLineColor = "#c6c6c6";
     var forceCircleR = 4;
     var forceCircleStroke = "#ffffff";
-    var forceCircleStrokeWidth = 0.5;
+    var forceCircleStrokeWidth = 0.3;
     var forceOpacity = 0.8;
     var unselecetedColor = "#0000ff";
 
@@ -25,7 +32,6 @@ d3.csv("data/oregonf.csv",function(error,data){
         });
 
     }
-    console.log(forceData);
 
         var nodesId = [];
         for (var i = 0 ; i < nodeData.length ; i++){
