@@ -2,20 +2,23 @@
  * @Author: ChenShan 
  * @Date: 2019-07-05 16:33:43 
  * @Last Modified by: ChenShan
- * @Last Modified time: 2019-07-07 17:20:56
+ * @Last Modified time: 2019-07-10 16:59:11
  */
 
 html{
     height: 100%;
     margin: 0;
 }
+
 body{
     height: 100%;
     margin: 0;
 }
+
 p{
     font-size: 
 }
+
 #left{
     height: 99%;
     width: 20%;
@@ -24,6 +27,7 @@ p{
     float: left;
     border: 1px solid;
 }
+
 #left1
 {
     height: 33%;
@@ -31,18 +35,21 @@ p{
     display: block;
     margin: 0 0 10px 0;
 }
+
 #left2
 {
     height: 33%;
     width: 99%;
     display: block;
 }
+
 #left3
 {
     height: 33%;
     width: 99%;
     display: block;
 }
+
 #mid
 {
     height: 99%;
@@ -52,6 +59,7 @@ p{
     float: left;
     border: 1px solid;
 }
+
 #right{
     height: 99%;
     width: 29.5%;
@@ -60,36 +68,45 @@ p{
     position: relative;
     border: 1px solid;
 }
+
 #right1
 {
     height: 49%;
     width: 100%;
     display: block;
 }
+
 #right2
 {
     height: 49%;
     width: 100%;
     display: block;
 }
+
 #left1_title,#left2_title,#left3_title,#right1_title,#right2_title,#mid_tittle{
     border: 1px solid;
     margin: 2px 0px;
     padding: 1px 0px;
     border-radius: 5px;
     box-shadow: 3px 3px 2px #c6c6c6;
+    /* display: inline-block; */
+    /* position: absolute; */
 }
+
 #tsne{
     height: 500px;
     width: 500px;
 }
+
 #heatmap{
     height: 370px;
     width: 450px;
 }
+
 .information{
     background: #c6c6c6;
 }
+
 p{
     font-size: 10pt;
 }

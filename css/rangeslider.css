@@ -1,3 +1,10 @@
+/*
+ * @Author: ChenShan 
+ * @Date: 2019-07-10 15:55:27 
+ * @Last Modified by: ChenShan
+ * @Last Modified time: 2019-07-10 15:57:02
+ */
+
 .rangeslider,
 .rangeslider__fill {
   background: #e6e6e6;
@@ -23,7 +30,7 @@
 }
 
 .rangeslider__fill {
-  background: #0000ff;
+  background: #6495ED;
   position: absolute;
   top: 0;
 }

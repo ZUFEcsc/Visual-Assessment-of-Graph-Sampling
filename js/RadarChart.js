@@ -1,3 +1,10 @@
+/*
+ * @Author: ChenShan 
+ * @Date: 2019-07-10 15:52:43 
+ * @Last Modified by:   ChenShan 
+ * @Last Modified time: 2019-07-10 15:52:43 
+ */
+
 // var radarChartWidth = 300;
 // var radarChartHeight = 300;
 // var radarChart = document.getElementById('left3').append('g')
@@ -6,22 +13,23 @@
 
 var height = 300;
 var width = 300;
-var arc = 2 * Math.PI;
 var radius = 100;
+//边数
 var total = 8;
 var level = 4;
 var rangeMin = 0;
 var rangeMax = 100;
+
+//角度onePiece = mAngle
+var arc = 2 * Math.PI;
 var onePiece = arc / total;
 var polygons = {
    webs:[],
    webPoints:[]
 };
 
-
-
 window.onload = function() {
-   var width = 600, height = 300;
+   var width = 310, height = 220;
    var areasData = [];
    // 创建一个分组用来组合要画的图表元素
    var main = d3.select('.container svg').append('g')
@@ -30,7 +38,16 @@ window.onload = function() {
 
      var data = {
          fielaNames:['RES','RJ','RNS','ISRW','SRW','DFS','BFS','TIES'],
-         values:[[10,20,30,40,50,60,70,80]]
+         values:[
+            [0.08650432224791785 * 1000,
+             0.07008171305227431 * 1000,
+             0.06193911614193387 * 1000,
+             0.051315719402242485 * 1000,
+             0.07804998794735474 * 1000,
+             0.07815066412970847 * 1000,
+             0.09218388335478131 * 1000,
+             0.07170914139826061 * 1000]
+         ]
       };
       
       for(var k = level ; k > 0 ; k--){
@@ -49,9 +66,6 @@ window.onload = function() {
          polygons.webs.push(webs);
          polygons.webPoints.push(webPoints);
       }
-      
-      // var webs = radarChart.append('g')
-                        // .classed('webs',true);
       
       var webs = main.append('g')
                      .classed('webs',true);
@@ -143,16 +157,69 @@ window.onload = function() {
                      return getColor(i);
                   });
 
+         var textPoints = [];
+         var textRadius = radius ;
+         for(var i = 0 ; i < total ; i++) {
+            var x = textRadius * Math.sin(i * onePiece);
+            var y = textRadius * Math.cos(i * onePiece);
+            textPoints.push({
+               x: x,
+               y: y
+            });
+         }
+         
+         var texts = main.append('g')
+                           .classed('texts',true);
+
+         texts.selectAll('text')
+               .data(textPoints)
+               .enter()
+               .append('text')
+               .attr('x',function(d,i){
+                  if(
+                     //右上(2)
+                     //左下
+                     (onePiece * i > Math.PI * 3 / 2 && onePiece * i <= Math.PI * 2)
+                   ||
+                  //左上(2)
+                   (onePiece * i >= Math.PI && onePiece * i <= Math.PI * 3 / 2)
+                   ){
+                     return d.x - 35;
+                  }
+                  else{
+                     return d.x ;
+                  }
+               })
+               .attr('y',function(d,i){
+                  if(
+                     //右下(3)
+                     (onePiece * i >= 0 && onePiece * i <= Math.PI / 2)
+                  //  ||
+                  // 右上
+                  //  (onePiece * i > Math.PI / 2 && onePiece * i <= Math.PI)
+                   ){
+                      return d.y + 10;
+                   }
+                   else{
+                     return d.y;
+                   }
+               })
+               .text(function(d,i){
+                  return data.fielaNames[i];
+               })
+               .attr("font-size",'0.6em');
       }
 };
 
 function getColor(idx) {
    var palette = [
-      '#2ec7c9', '#b6a2de', '#5ab1ef', '#ffb980', '#d87a80',
-      '#8d98b3', '#e5cf0d', '#97b552', '#95706d', '#dc69aa',
+      '#6495ED',
+      '#ffb980', '#d87a80', '#97b552', '#95706d', '#dc69aa',
+      '#8d98b3', '#e5cf0d', '#2ec7c9', '#b6a2de', '#5ab1ef', 
+      '#59678c', '#c9ab00', '#7eb00a', '#6f5553', '#c14089',
       '#07a2a4', '#9a7fd1', '#588dd5', '#f5994e', '#c05050',
-      '#59678c', '#c9ab00', '#7eb00a', '#6f5553', '#c14089'
    ]
    return palette[idx % palette.length];
 }
+
 
