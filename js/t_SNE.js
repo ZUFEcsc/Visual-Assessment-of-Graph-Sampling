@@ -2,7 +2,7 @@
  * @Author: ChenShan 
  * @Date: 2019-07-05 16:33:24 
  * @Last Modified by: ChenShan
- * @Last Modified time: 2019-07-10 17:40:06
+ * @Last Modified time: 2019-07-11 19:26:48
  */
 
 d3.csv("data/oregonf_TSNE_5000.csv",function(error,data_node){
@@ -134,7 +134,6 @@ d3.csv("data/kde_5000/oregonf_TSNE_exponential_id_x_y_kde.csv",function(error,da
 
 function change(text){
     if(text.innerHTML == "Heatmap"){
-        // drawheatmap(heatmapData);
         document.getElementById('heatmap').style.display = "block";
         document.getElementById('tsneNodes').style.display = "none";
 

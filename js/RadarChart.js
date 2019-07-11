@@ -1,15 +1,9 @@
 /*
  * @Author: ChenShan 
  * @Date: 2019-07-10 15:52:43 
- * @Last Modified by:   ChenShan 
- * @Last Modified time: 2019-07-10 15:52:43 
+ * @Last Modified by: ChenShan
+ * @Last Modified time: 2019-07-11 20:16:15
  */
-
-// var radarChartWidth = 300;
-// var radarChartHeight = 300;
-// var radarChart = document.getElementById('left3').append('g')
-//                            .classed('radarChart',true)
-//                            .attr('transform','translate(' + radarChartWidth/2 + ',' + radarChartHeight/2 + ')');
 
 var height = 300;
 var width = 300;
@@ -20,7 +14,7 @@ var level = 4;
 var rangeMin = 0;
 var rangeMax = 100;
 
-//角度onePiece = mAngle
+//角度   onePiece = mAngle
 var arc = 2 * Math.PI;
 var onePiece = arc / total;
 var polygons = {
@@ -36,19 +30,115 @@ window.onload = function() {
      .classed('main', true)
      .attr('transform', "translate(" + width/2 + ',' + height/2 + ')');
 
-     var data = {
-         fielaNames:['RES','RJ','RNS','ISRW','SRW','DFS','BFS','TIES'],
-         values:[
-            [0.08650432224791785 * 1000,
-             0.07008171305227431 * 1000,
-             0.06193911614193387 * 1000,
-             0.051315719402242485 * 1000,
-             0.07804998794735474 * 1000,
-             0.07815066412970847 * 1000,
-             0.09218388335478131 * 1000,
-             0.07170914139826061 * 1000]
-         ]
-      };
+   var dataconst = 1000 ;
+{
+   var data_5 = {
+      fielaNames:['RE','RJ','RN','ISRW','RW','DFS','BFS','TIES'],
+      values:[
+         [0.07804998794735474 * dataconst,
+            0.051315719402242485 * dataconst,
+            0.06193911614193387 * dataconst,
+            0.07815066412970847 * dataconst,
+            0.07008171305227431 * dataconst,
+            0.09218388335478131 * dataconst,
+            0.07170914139826061 * dataconst,
+            0.08650432224791785 * dataconst]
+      ]
+   };
+   var data_10 = {
+      fielaNames:['RE','RJ','RN','ISRW','RW','DFS','BFS','TIES'],
+      values:[
+         [0.07751444405033886 * dataconst,
+            0.06475198116084226 * dataconst,
+            0.05489935676361536 * dataconst,
+            0.07181993619994143 * dataconst,
+            0.08122590936546883 * dataconst,
+            0.07980770920877772 * dataconst,
+            0.07016705916472356 * dataconst,
+            0.08798537528780445 * dataconst]
+      ]
+   };
+   var data_15 = {
+      fielaNames:['RE','RJ','RN','ISRW','RW','DFS','BFS','TIES'],
+      values:[
+         [0.08300480747219634 * dataconst,
+            0.05927815209464797 * dataconst,
+            0.05840568153182214 * dataconst,
+            0.07599039366051824 * dataconst,
+            0.07754456657813621 * dataconst,
+            0.0741749098926448 * dataconst,
+            0.0547946079192265 * dataconst,
+            0.07872704264446788 * dataconst]
+      ]
+   };
+   var data_20 = {
+      fielaNames:['RE','RJ','RN','ISRW','RW','DFS','BFS','TIES'],
+      values:[
+         [0.08650432224791785 * dataconst,
+            0.07008171305227431 * dataconst,
+            0.06193911614193387 * dataconst,
+            0.051315719402242485 * dataconst,
+            0.07804998794735474 * dataconst,
+            0.07815066412970847 * dataconst,
+            0.09218388335478131 * dataconst,
+            0.07170914139826061 * dataconst]
+      ]
+   };
+   var data_25 = {
+      fielaNames:['RE','RJ','RN','ISRW','RW','DFS','BFS','TIES'],
+      values:[
+         [0.082659912945247 * dataconst,
+            0.06730058276739141 * dataconst,
+            0.062165157693053134 * dataconst,
+            0.07107566509557756 * dataconst,
+            0.07645870783978687 * dataconst,
+            0.07335977629945767 * dataconst,
+            0.06344549744900864 * dataconst,
+            0.08071882106441436 * dataconst]
+      ]
+   };
+   var data_30 = {
+      fielaNames:['RE','RJ','RN','ISRW','RW','DFS','BFS','TIES'],
+      values:[
+         [0.08432437014670684 * dataconst,
+            0.06256835636493795 * dataconst,
+            0.06501227246888476 * dataconst,
+            0.07584746609429403 * dataconst,
+            0.07543323374103729 * dataconst,
+            0.06785190209712716 * dataconst,
+            0.060802446931975965 * dataconst,
+            0.08190955670720974 * dataconst]
+      ]
+   };
+   var data_35 = {
+      fielaNames:['RE','RJ','RN','ISRW','RW','DFS','BFS','TIES'],
+      values:[
+         [0.07815771870651843 * dataconst,
+            0.06557860628574932 * dataconst,
+            0.06908642170655367 * dataconst,
+            0.07220570304108556 * dataconst,
+            0.07363845201117289 * dataconst,
+            0.0716600241825136 * dataconst,
+            0.05324563891385155 * dataconst,
+            0.08259878007307711 * dataconst]
+      ]
+   };
+   var data_40 = {
+      fielaNames:['RE','RJ','RN','ISRW','RW','DFS','BFS','TIES'],
+      values:[
+         [0.08119365235612636 * dataconst,
+            0.0673090476358627 * dataconst,
+            0.07026681024008176 * dataconst,
+            0.07174573977904616 * dataconst,
+            0.0712026039469732 * dataconst,
+            0.07006002226238398 * dataconst,
+            0.05990944603867329 * dataconst,
+            0.07765626268173184 * dataconst]
+      ]
+   };
+}
+   
+
       
       for(var k = level ; k > 0 ; k--){
          var webs = '';
@@ -60,13 +150,15 @@ window.onload = function() {
             webs += x + ',' + y + ' ';
             webPoints.push({
                x:x,
-               y:y
+               y:y,
             });
          }
          polygons.webs.push(webs);
          polygons.webPoints.push(webPoints);
       }
       
+      //绘制网轴
+      {
       var webs = main.append('g')
                      .classed('webs',true);
       
@@ -77,7 +169,10 @@ window.onload = function() {
             .attr('points',function(d){
                return d;
             });
+      }
 
+      //添加纵轴
+      {
       var lines = main.append('g')
                      .classed('lines',true);
          
@@ -95,7 +190,8 @@ window.onload = function() {
             })
             .attr('stroke','gray')
             .attr('stroke-dasharray','10 5');
-   
+      }
+      
       var values = data.values;
       for(var i = 0 ; i < values.length ; i++){
          var value = values[i];
@@ -128,7 +224,10 @@ window.onload = function() {
                return 'area'+ (i+1);
             });
 
-      for(var i = 0 ; i < areasData.length ; i++){
+      for(var i = 0 ; i < areasData.length ; i++){//每次循环每个雷达图区域
+         
+         //各个数据(点)的连线
+         {
          var area = areas.select('.area'+ (i+1));
          var areaData = areasData[i];
          area.append('polygon')
@@ -139,6 +238,10 @@ window.onload = function() {
                .attr('fill',function(d,i){
                   return getColor(i);
                });
+         }      
+
+         //各个点的表示
+         {
          var circles = area.append('g')
                            .classed('circles',true);
 
@@ -156,7 +259,10 @@ window.onload = function() {
                   .attr('stroke',function(d,index){
                      return getColor(i);
                   });
+         }
 
+         //文本数据(采样算法名称)
+         {
          var textPoints = [];
          var textRadius = radius ;
          for(var i = 0 ; i < total ; i++) {
@@ -208,6 +314,8 @@ window.onload = function() {
                   return data.fielaNames[i];
                })
                .attr("font-size",'0.6em');
+         }
+            
       }
 };
 
