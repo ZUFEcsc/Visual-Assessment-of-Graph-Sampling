@@ -2,7 +2,7 @@
  * @Author: ChenShan 
  * @Date: 2019-07-10 15:52:43 
  * @Last Modified by: ChenShan
- * @Last Modified time: 2019-07-11 20:16:15
+ * @Last Modified time: 2019-07-12 18:58:52
  */
 
 var height = 300;
@@ -22,16 +22,14 @@ var polygons = {
    webPoints:[]
 };
 
-window.onload = function() {
-   var width = 310, height = 220;
-   var areasData = [];
-   // 创建一个分组用来组合要画的图表元素
-   var main = d3.select('.container svg').append('g')
-     .classed('main', true)
-     .attr('transform', "translate(" + width/2 + ',' + height/2 + ')');
+var width = 310, height = 220;
+var areasData = [];
 
-   var dataconst = 1000 ;
-{
+var splrateconst;
+
+var dataconst = 1000 ;
+var data = []
+{//数据
    var data_5 = {
       fielaNames:['RE','RJ','RN','ISRW','RW','DFS','BFS','TIES'],
       values:[
@@ -137,9 +135,15 @@ window.onload = function() {
       ]
    };
 }
-   
 
-      
+window.onload = function() {
+   data = data_20;
+   // 创建一个分组用来组合要画的图表元素
+   var main = d3.select('.container svg').append('g')
+   .classed('main', true)
+   .attr('transform', "translate(" + width/2 + ',' + height/2 + ')');
+
+   function drawradarchart(data){
       for(var k = level ; k > 0 ; k--){
          var webs = '';
          var webPoints = [];
@@ -157,8 +161,7 @@ window.onload = function() {
          polygons.webPoints.push(webPoints);
       }
       
-      //绘制网轴
-      {
+      {//绘制网轴
       var webs = main.append('g')
                      .classed('webs',true);
       
@@ -170,9 +173,8 @@ window.onload = function() {
                return d;
             });
       }
-
-      //添加纵轴
-      {
+   
+      {//添加纵轴
       var lines = main.append('g')
                      .classed('lines',true);
          
@@ -212,7 +214,7 @@ window.onload = function() {
             points:points
          });
       }
-
+   
       var areas = main.append('g')
                      .classed('areas',true);
             
@@ -223,11 +225,10 @@ window.onload = function() {
             .attr('class',function(d,i){
                return 'area'+ (i+1);
             });
-
+   
       for(var i = 0 ; i < areasData.length ; i++){//每次循环每个雷达图区域
          
-         //各个数据(点)的连线
-         {
+         {//各个数据(点)的连线
          var area = areas.select('.area'+ (i+1));
          var areaData = areasData[i];
          area.append('polygon')
@@ -239,12 +240,11 @@ window.onload = function() {
                   return getColor(i);
                });
          }      
-
-         //各个点的表示
-         {
+   
+         {//各个点的表示
          var circles = area.append('g')
                            .classed('circles',true);
-
+   
          circles.selectAll('circle')
                   .data(areaData.points)
                   .enter()
@@ -260,9 +260,8 @@ window.onload = function() {
                      return getColor(i);
                   });
          }
-
-         //文本数据(采样算法名称)
-         {
+   
+         {//文本数据(采样算法名称)
          var textPoints = [];
          var textRadius = radius ;
          for(var i = 0 ; i < total ; i++) {
@@ -276,7 +275,7 @@ window.onload = function() {
          
          var texts = main.append('g')
                            .classed('texts',true);
-
+   
          texts.selectAll('text')
                .data(textPoints)
                .enter()
@@ -317,6 +316,9 @@ window.onload = function() {
          }
             
       }
+   }
+      
+   drawradarchart(data);
 };
 
 function getColor(idx) {
@@ -330,4 +332,35 @@ function getColor(idx) {
    return palette[idx % palette.length];
 }
 
+function changesplrate()
+{      
+   splrateconst = document.getElementById('splrateoutput').innerText;
+   alert("value = " + splrateconst);
 
+   if(splrateconst == 5){
+      data = data_5;
+   }
+   if(splrateconst == 10){
+      data = data_10;
+   }
+   if(splrateconst == 15){
+      data = data_15;
+   }
+   if(splrateconst == 20){
+      data = data_20;
+   }
+   if(splrateconst == 25){
+      data = data_25;
+   }
+   if(splrateconst == 30){
+      data = data_30;
+   }
+   if(splrateconst == 35){
+      data = data_35;
+   }
+   if(splrateconst == 40){
+      data = data_40;
+   }
+   
+   // drawradarchart(data);
+}

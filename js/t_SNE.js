@@ -2,7 +2,7 @@
  * @Author: ChenShan 
  * @Date: 2019-07-05 16:33:24 
  * @Last Modified by: ChenShan
- * @Last Modified time: 2019-07-11 19:26:48
+ * @Last Modified time: 2019-07-12 15:17:50
  */
 
 d3.csv("data/oregonf_TSNE_5000.csv",function(error,data_node){
@@ -65,10 +65,13 @@ d3.csv("data/oregonf_TSNE_5000.csv",function(error,data_node){
 
 
 var heatmapData = []
-d3.csv("data/kde_5000/oregonf_TSNE_exponential_id_x_y_kde.csv",function(error,data){
+d3.csv("data/oregonf_TSNE_epanechnikov_id_x_y_kde.csv",function(error,data){
+    console.log(data);
 
     Data = data;
 
+    console.log(Data);
+    
     for(var i=0;i<Data.length;i++){
         heatmapData.push({
             id:parseInt(Data[i].id),

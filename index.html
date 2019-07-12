@@ -32,7 +32,7 @@
 
 	<script src="js/data.js"></script>
 	<script src="js/t_SNE.js"></script>
-	<!-- <script src="js/force_pixi.js"></script> -->
+	
 	<script src="js/RadarChart.js"></script>
 	<script src="js/force_faster.js"></script>
 
@@ -59,10 +59,12 @@
 			<button type="button" style="margin: 0px 30px;">Sample</button>
 			<div class="samplingIfm">
 				<p>Sampling Rate:
-					<input type="range" name="max" min ="0%" max = "100%" value="20" step="5" data-rangeslider><output></output>
+					<input type = "range" id = "splrate" name = "splrate" min = "0%" max = "100%"
+					 value = "20" step = "5" onchange = "changesplrate()" data-rangeslider>
+					<output id = "splrateoutput"></output>
 				</p>
 				<p>Max Threshold: 
-					<input type="range" name="max" min ="0%" max = "100%" value="30" data-rangeslider><output></output>
+					<input type="range" name="max" min ="0%" max = "100%" value="60" data-rangeslider><output></output>
 				</p>
 				<p>Min Threshold:
 					<input type="range" name="min" min ="0%" max = "100%" value="10" data-rangeslider><output></output>
