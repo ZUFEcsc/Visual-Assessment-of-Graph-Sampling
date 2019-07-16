@@ -1,66 +1,58 @@
+<!-- /*
+ * @Author: ChenShan 
+ * @Date: 2019-07-15 17:45:02 
+ * @Last Modified by:   ChenShan 
+ * @Last Modified time: 2019-07-15 17:45:02 
+ */ -->
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<title>暑期实践7/11</title>
-
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- <link rel="stylesheet" href="css/main.css"> -->
 	<link rel="stylesheet" href="css/rangeslider.css">
 	<link rel="stylesheet" href="css/frame.css">
 	<link rel="stylesheet" href="css/radarchart.css">
 	<style>
-		button{
-			background-color: #c6c6c6;
-			/* border: none; */
-			color: white;
-			padding: 2px 3px;
-			text-align: center;
-			font-size: 14px;
-			cursor: pointer;
-		}
+		
 	</style>
 </head>
-<body>
 	
+<body>
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 	<script src="js/heatmap.min.js"></script>
 	<script src="http://www.jq22.com/jquery/1.9.1/jquery.min.js"></script>
 	<script src="js/jquery_s.js"></script>
 	<script src="js/rangeslider.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.5.1/pixi.min.js"></script>
-
-	<script src="js/data.js"></script>
-	<script src="js/t_SNE.js"></script>
-	
-	<script src="js/RadarChart.js"></script>
-	<script src="js/force_faster.js"></script>
-
+	<script src="js/highmaps.js"></script>
+	<script src="js/function.js"></script>
 	<div id = "left">
-		<!-- LEFT -->
 		<div id = "left1">
 			<div id = "left1_title"> Control Panel</div>
 			<div class = "information">
 				<p>Graph Nodes:11174</p>
 				<p>Graph Edegs:23410</p>
-				<p>Sampling Nodes:</p>
-				<p>Sampling Edegs:</p>
+				<p id = "splnodes">Sampling Nodes:</p>
+				<p id = "spledges">Sampling Edegs:</p>
 			</div>
-			<select style="margin-left: 50px; float: left;">
-				<option value="Sampling">SRW</option>
-				<option value="Sampling">ISRW</option>
-				<option value="Sampling">RNS</option>
-				<option value="Sampling">RJ</option>
-				<option value="Sampling">RES</option>
-				<option value="Sampling">TIES</option>
-				<option value="Sampling">BFS</option>
-				<option value="Sampling">DFS</option>
+			<select id = "samplingfunction" style="margin-left: 50px; float: left;">
+				<option value="RW">RW</option>
+				<option value="ISRW">ISRW</option>
+				<option value="RN">RN</option>
+				<option value="RJ">RJ</option>
+				<option value="RE">RE</option>
+				<option value="TIES">TIES</option>
+				<option value="BFS">BFS</option>
+				<option value="DFS">DFS</option>
 			</select>
-			<button type="button" style="margin: 0px 30px;">Sample</button>
+			<button type="button" style="margin: 0px 30px;" onclick="selected()">Sample</button>
 			<div class="samplingIfm">
 				<p>Sampling Rate:
 					<input type = "range" id = "splrate" name = "splrate" min = "0%" max = "100%"
-					 value = "20" step = "5" onchange = "changesplrate()" data-rangeslider>
+					 value = "20" step = "5" oncomplete = "changesplrate()" data-rangeslider>
 					<output id = "splrateoutput"></output>
 				</p>
 				<p>Max Threshold: 
@@ -71,14 +63,18 @@
 				</p>	
 			</div>		
 		</div>
+
 		<div id = "left2">
-			<div id = "left2_title">l2</div>
+			<div id = "left2_title">LineChart</div>
+			<canvas id="containerLineChart" width = 300 height = 230></canvas>
+			<script src="js/linechart.js"></script>
 		</div>
-		<div class = "container">
+
+		<div class = "containerRadarChart" style="height: 230px; width: 302px ">
 			<div id = "left3_title">Sampling RadarChart</div>
 			<svg width="100%" height="100%"></svg>
 		</div>
-		
+		<script src="js/RadarChart.js"></script>	
 	</div>
 
 	<div id = "mid">
@@ -88,19 +84,25 @@
 			<option value="community">Community</option>
 		</select>
 		</div>
+		<script src="js/force_faster.js"></script>
 	</div>
 
 	<div id = "right">
-		<!-- RIGHT -->
 		<div id = "right1">
-			<button style="margin-right:6px; float:right;" onclick="change(this)">Heatmap</button>
+			<button id="cgetsneheatmap" style="margin-right:6px; float:right;" onclick="change(this)">Heatmap</button>
 			<div id = "right1_title"> t-SNE / Heatmap</div>
 			<div id = "heatmap" style="display: none"></div>
+			
+			<script src="js/t_SNE.js"></script>
+			<script src="js/heatmap_new.js"></script>
+			<script src="js/polygon.js"></script>
 		</div>
 		<div id = "right2">
-			<div id = "right2_title">r2</div>
+			<div id = "right2_title">Highmap</div>
+			<div id = "highmap" style ="width:450px; height: 370px"></div>
+			<script src="js/highmap.js">
+			</script>
 		</div>
 	</div>
-	
 </body>
 </html>

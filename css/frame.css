@@ -2,7 +2,7 @@
  * @Author: ChenShan 
  * @Date: 2019-07-05 16:33:43 
  * @Last Modified by: ChenShan
- * @Last Modified time: 2019-07-10 16:59:11
+ * @Last Modified time: 2019-07-14 21:55:58
  */
 
 html{
@@ -71,6 +71,7 @@ p{
 
 #right1
 {
+    /* position: absolute; */
     height: 49%;
     width: 100%;
     display: block;
@@ -109,4 +110,14 @@ p{
 
 p{
     font-size: 10pt;
+}
+
+button{
+    background-color: #c6c6c6;
+    /* border: none; */
+    color: white;
+    padding: 2px 3px;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
 }
