@@ -2,8 +2,9 @@
  * @Author: ChenShan 
  * @Date: 2019-07-14 20:42:01 
  * @Last Modified by: ChenShan
- * @Last Modified time: 2019-07-15 20:52:23
+ * @Last Modified time: 2019-07-16 11:30:17
  */
+
 classindex = 0;
 polygonfilename="data/dbscan_data/dbscan_"+String(classindex)+".csv";
 
@@ -42,8 +43,6 @@ function drawpolygon(filename,index){
                 [hull[0][0],hull[0][1]]
             )
 
-            // console.log(filename);
-            
     d3.csv("data/oregonf_TSNE_5000.csv",function(error,data){
         Data = data;
         for(var i=0;i<Data.length;i++){

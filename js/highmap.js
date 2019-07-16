@@ -2,26 +2,13 @@
  * @Author: ChenShan 
  * @Date: 2019-07-13 15:35:49 
  * @Last Modified by: ChenShan
- * @Last Modified time: 2019-07-16 10:04:11
+ * @Last Modified time: 2019-07-16 21:01:30
  */
 
 Highcharts.chart('highmap', {
     chart: {
         type: 'heatmap',
         plotBorderWidth: 1,
-        // events:
-        // {
-        //     click: function(e){
-        //         var x = e.series.xAxis.categories[e.point.x];
-        //         var y = e.point.y;
-        //         var selectedpolygon = '#polygon_'+String(y);
-        //         d3.select(selectedpolygon)
-        //         .attr('fill','red')
-        //         .attr('stroke-width','2');
-
-        //         alert(y);
-        //     }
-        // }
     },
     title: {
         text: null
@@ -56,9 +43,23 @@ Highcharts.chart('highmap', {
         dataLabels: {
             enabled: false,
         }
-        }]
-    },
-    );
+    }],
 
+    plotOptions: {
+        series: {
+            cursor: 'pointer',
+            events: {
+                click: function(e) {
+                    var y = e.point.y;
+                    var selectedpolygon = '#polygon_'+String(y);
+                    d3.select(selectedpolygon)
+                    .attr('fill','rgb(189, 30, 30,0.5)')
+                    .attr('stroke-width','2');
+                    // alert(y);
+                },
+            }
+        }
+    },
+});
     
-    document.getElementsByClassName('highcharts-credits')[0].style.display="none";
+document.getElementsByClassName('highcharts-credits')[0].style.display="none";

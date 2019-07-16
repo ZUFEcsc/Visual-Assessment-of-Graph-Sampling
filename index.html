@@ -9,15 +9,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>暑期实践7/11</title>
+	<title>暑期实践7/16</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- <link rel="stylesheet" href="css/main.css"> -->
 	<link rel="stylesheet" href="css/rangeslider.css">
 	<link rel="stylesheet" href="css/frame.css">
 	<link rel="stylesheet" href="css/radarchart.css">
-	<style>
-		
-	</style>
 </head>
 	
 <body>
@@ -52,7 +49,7 @@
 			<div class="samplingIfm">
 				<p>Sampling Rate:
 					<input type = "range" id = "splrate" name = "splrate" min = "0%" max = "100%"
-					 value = "20" step = "5" oncomplete = "changesplrate()" data-rangeslider>
+					 value = "20" step = "5" data-rangeslider>
 					<output id = "splrateoutput"></output>
 				</p>
 				<p>Max Threshold: 
@@ -80,9 +77,6 @@
 	<div id = "mid">
 		<div id = "mid_tittle">
 			 Network
-		<select style="margin-right: 8px; float: right;">
-			<option value="community">Community</option>
-		</select>
 		</div>
 		<script src="js/force_faster.js"></script>
 	</div>
@@ -91,7 +85,7 @@
 		<div id = "right1">
 			<button id="cgetsneheatmap" style="margin-right:6px; float:right;" onclick="change(this)">Heatmap</button>
 			<div id = "right1_title"> t-SNE / Heatmap</div>
-			<div id = "heatmap" style="display: none"></div>
+			<div id = "heatmap" style="display: none;"></div>
 			
 			<script src="js/t_SNE.js"></script>
 			<script src="js/heatmap_new.js"></script>

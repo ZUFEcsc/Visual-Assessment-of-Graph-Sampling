@@ -2,7 +2,7 @@
  * @Author: ChenShan 
  * @Date: 2019-07-10 15:52:43 
  * @Last Modified by: ChenShan
- * @Last Modified time: 2019-07-14 17:09:51
+ * @Last Modified time: 2019-07-16 14:30:11
  */
 
 var height = 300;
@@ -321,11 +321,15 @@ drawradarchart(data_20);
 
 function getColor(idx) {
    var palette = [
-      '#6495ED',
-      '#ffb980', '#d87a80', '#97b552', '#95706d', '#dc69aa',
-      '#8d98b3', '#e5cf0d', '#2ec7c9', '#b6a2de', '#5ab1ef', 
-      '#59678c', '#c9ab00', '#7eb00a', '#6f5553', '#c14089',
-      '#07a2a4', '#9a7fd1', '#588dd5', '#f5994e', '#c05050',
+      // '#6495ED',
+      // '#2ec7c9', 
+      // '#b6a2de',
+      '#5ab1ef', 
+      
+      // '#07a2a4', 
+      // '#9a7fd1', 
+      // '#588dd5', 
+      // '#f5994e',
    ]
    return palette[idx % palette.length];
 }

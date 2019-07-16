@@ -2,7 +2,7 @@
  * @Author: ChenShan 
  * @Date: 2019-07-05 16:33:24 
  * @Last Modified by: ChenShan
- * @Last Modified time: 2019-07-15 14:29:52
+ * @Last Modified time: 2019-07-16 13:09:37
  */
 
 tsnefilename = "data/oregonf_TSNE_5000.csv";
@@ -63,8 +63,8 @@ function darwtsnenodes(filename){
                     .attr("id",function(d){
                         return d.id;
                     })
-                    .attr("r",1.5)
-                    .attr("fill","gray");
+                    .attr("r",1.2)
+                    .attr("fill","rgb(23, 37, 90,0.6)");
         }
     })
 }

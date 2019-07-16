@@ -2,7 +2,7 @@
  * @Author: ChenShan 
  * @Date: 2019-07-13 21:18:38 
  * @Last Modified by: ChenShan
- * @Last Modified time: 2019-07-14 17:38:28
+ * @Last Modified time: 2019-07-16 17:07:50
  */
 
 var canvas = document.getElementById("containerLineChart");
@@ -142,7 +142,7 @@ function drawlinechart(point){
             ctx.lineTo(x,y);
         num++;
         ctx.moveTo(x,y);
-        ctx.strokeStyle = "#3FA7DC";
+        ctx.strokeStyle = "#6495ED";
         //连接边框
         ctx.stroke();
     }, 400);

@@ -2,7 +2,7 @@
  * @Author: ChenShan 
  * @Date: 2019-07-14 20:37:19 
  * @Last Modified by: ChenShan
- * @Last Modified time: 2019-07-15 14:30:27
+ * @Last Modified time: 2019-07-16 11:26:52
  */
 
 heatmapfilename = "data/oregonf_TSNE_epanechnikov_id_x_y_kde.csv";
@@ -74,6 +74,8 @@ function drawheatmap(filename){
         }
         }
     })
+    
+    // d3.select('#heatmap').attr('style','position:absolute');
 }
 
 drawheatmap(heatmapfilename);

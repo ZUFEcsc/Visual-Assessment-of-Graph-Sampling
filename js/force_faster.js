@@ -2,7 +2,7 @@
  * @Author: ChenShan 
  * @Date: 2019-07-11 15:18:34 
  * @Last Modified by: ChenShan
- * @Last Modified time: 2019-07-15 21:56:07
+ * @Last Modified time: 2019-07-16 21:03:45
  */
 
 forceData = [];
@@ -13,46 +13,35 @@ var forceCircleStroke = "#ffffff";
 var forceCircleStrokeWidth = 0.5;
 var forceOpacity = 0.8;
 var unselecetedColor = "#0000ff";
-
 var force_height = 755;
 var force_width = 760;
-const app = new PIXI.Application({
-    antialias: true,
-    width: force_width,
-    height: force_height,
-    backgroundColor: 0xffffff,
-    resolution:1
-});
+
+var scaleconst = 2600;
+var forceflag = 1;
+
+var force_fasterfilename = "data/oregonf.csv";
 
 function drawForce(filename){
     {
+        const app = new PIXI.Application({
+            antialias: true,
+            width: force_width,
+            height: force_height,
+            backgroundColor: 0xffffff,
+            resolution:1
+        });
+        
         var opensamplingdata = [];
-
-        d3.csv(filename,function(error,data)
-        {
-            opensamplingdata = data;
-            for(var k = 0 ; k < data.length ; k++)
-            {
-                opensamplingdata[k].id = parseInt(data[k].id);
-            }
-        })
-
+        
         d3.json("data/force_getlct_edge.json",function populate(data_edge){
             nodes = [];
             links = [];
         for(var i = 0 ; i < data_edge.length ; i++)
         {
-            for(var j = 0 ; j < opensamplingdata.length ; j++)
-            {
-                if(opensamplingdata[j].id == data_edge[i].source || opensamplingdata[j].id == data_edge[i].target)
-                {
-                    var link = {};
-                    link.source = data_edge[i].source;
-                    link.target = data_edge[i].target;
-                    
-                    links.push(link);
-                }
-            }
+            var link = {};
+            link.source = data_edge[i].source;
+            link.target = data_edge[i].target;
+            links.push(link);
         }
     
         console.log(links);
@@ -60,21 +49,20 @@ function drawForce(filename){
         d3.json("data/force_getlct_node.json",function populate(data_node){
     
             document.getElementById('mid').appendChild(app.view);
-        
-            for(var i = 0 ; i < data_node.length ; i++){
-                for(var j = 0 ; j < opensamplingdata.length ; j++)
-                {
-                    if(opensamplingdata[j].id == data_node[i].id)
-                    {
-                        var node = {};
-                        
-                        node["x"] = data_node[i]["x"];
-                        node["y"] = data_node[i]["y"];
-                        nodes.push(node);
-                    }
-                }
-            }
     
+            for(var i = 0 ; i < data_node.length ; i++){
+                // d3.csv(filename,function(error,s_data){
+                    // s_Data = s_data
+                    // for ( var k = 0 ; k < s_Data.length ; k++){
+                        // if (s_Data[k].id == data_node[i].id){
+                            var node = {};
+                            node.x = data_node[i].x;
+                            node.y = data_node[i].y;
+                            nodes.push(node);
+                        // }
+                    // }
+                // })
+            }
             var x_max = d3.max(nodes,function(d){
                 return d.x;
             });
@@ -87,26 +75,19 @@ function drawForce(filename){
             var y_min = d3.min(nodes,function(d){
                 return d.y;
             });
-    
-            var scaleconst = 2600;
             var xScale = d3.scaleLinear()
                             .domain([x_min,x_max])
-                            .range([-scaleconst,scaleconst+force_width]);
+                            .range([-scaleconst,scaleconst]);
             var yScale = d3.scaleLinear()
                             .domain([y_min,y_max])
-                            .range([-scaleconst,scaleconst+force_height]);
-                            
+                            .range([-scaleconst,scaleconst]);               
             const lines = new PIXI.Graphics();
             for(var i = 0 ; i < links.length ; i++){
                 lines.lineStyle(0.4,0xc6c6c6,1);
                 lines.moveTo(xScale(links[i]["source"]["x"]),yScale(links[i]["source"]["y"]));
                 lines.lineTo(xScale(links[i]["target"]["x"]),yScale(links[i]["target"]["y"]));
             }
-        
             app.stage.addChild(lines);
-    
-            // console.log(nodes);
-    
             const circles = new PIXI.Graphics();
             for(var i = 0 ; i < nodes.length ; i++){
                 circles.beginFill(0x000080,0.9);
@@ -117,3 +98,5 @@ function drawForce(filename){
         })
     })}
 }
+
+drawForce(force_fasterfilename);

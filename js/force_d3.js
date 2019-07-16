@@ -2,37 +2,35 @@
  * @Author: ChenShan 
  * @Date: 2019-07-05 16:33:17 
  * @Last Modified by: ChenShan
- * @Last Modified time: 2019-07-08 16:27:13
+ * @Last Modified time: 2019-07-16 16:58:30
  */
 
-forceData = [];
+var force_d3filename 
 
-d3.csv("data/oregonf.csv",function(error,data){
-    var forcelineWidth = 1;
-    var forceLineColor = "#c6c6c6";
-    var forceCircleR = 4;
-    var forceCircleStroke = "#ffffff";
-    var forceCircleStrokeWidth = 0.3;
-    var forceOpacity = 0.8;
-    var unselecetedColor = "#0000ff";
-
-    var force_height = 755;
-    var force_width = 760;
+function drawforce_d3(filename){
+    
     var force_svg = d3.select('#mid')
-                        .append("svg")
-                        .attr("float","none")
-                        .attr("height",force_height)
-                        .attr("width",force_width);
-                        
-    Data = data;
-    for(var i = 0 ; i < Data.length ;i++){
-        forceData.push({
-            source:parseInt(Data[i].source),
-            target:parseInt(Data[i].target)
-        });
+                    .append("svg")
+                    .attr("id",'d3force')
+                    .attr("float","none")
+                    .attr("height",force_height)
+                    .attr("width",force_width);
 
-    }
+    d3.csv(force_d3filename,function(error,data){
+        forceData = [];
+        Data = data;
 
+        d3.csv('data/oregonf.csv',function(error,alldata)
+        {
+            for(var i = 0 ; i < alldata.length ; i++)
+            {
+               
+                        forceData.push({
+                            source:parseInt(alldata[i].source),
+                            target:parseInt(alldata[i].target)
+                        });                
+            }
+        })
         var nodesId = [];
         for (var i = 0 ; i < nodeData.length ; i++){
             nodesId.push({
@@ -77,33 +75,34 @@ d3.csv("data/oregonf.csv",function(error,data){
                                                 .attr("stroke",forceLineColor)
                                                 .attr("opacity",forceOpacity)
                                                 .attr("id",function(d){
-                                                    return "line" + d.source+"to"+d.target;
-                                                })
+                                                return "line" + d.source+"to"+d.target;
+                                })
                                 var node = force_svg.append("g")
-                                                .attr("class","forcenode")
-                                                .selectAll("circle")
-                                                .data(nodesId)
-                                                .enter()
-                                                .append("circle")
-                                                .attr("cx",function(d,i){
-                                                    return d.x;
-                                                })
-                                                .attr("cy",function(d,i){
-                                                    return d.y;
-                                                })
-                                                .attr("opacity",forceOpacity)
-                                                .style("fill",unselecetedColor)
-                                                .attr("r",forceCircleR)
-                                                .attr("id",function(d){
-                                                    return "forceName"+d.name;
-                                                })
-                                                .attr("stroke",forceCircleStroke)
-                                                .attr("stroke-width",forceCircleStrokeWidth)
-                                                .on("click",function(d){
-                                                    pointclick(d.id);
-                                                    forceselect(d.id);
-                                                });
+                                        .attr("class","forcenode")
+                                        .selectAll("circle")
+                                        .data(nodesId)
+                                        .enter()
+                                        .append("circle")
+                                        .attr("cx",function(d,i){
+                                            return d.x;
+                                        })
+                                        .attr("cy",function(d,i){
+                                            return d.y;
+                                        })
+                                        .attr("opacity",forceOpacity)
+                                        .style("fill",unselecetedColor)
+                                        .attr("r",forceCircleR)
+                                        .attr("id",function(d){
+                                            return "forceName"+d.name;
+                                        })
+                                        .attr("stroke",forceCircleStroke)
+                                        .attr("stroke-width",forceCircleStrokeWidth)
+                                        .on("click",function(d){
+                                            pointclick(d.id);
+                                            forceselect(d.id);
+                                        });
                                 console.log("end")
-                            })
-       
-})
+                                })
+    })
+    
+}

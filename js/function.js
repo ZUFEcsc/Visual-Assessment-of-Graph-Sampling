@@ -2,7 +2,7 @@
  * @Author: ChenShan 
  * @Date: 2019-07-13 22:05:45 
  * @Last Modified by: ChenShan
- * @Last Modified time: 2019-07-15 17:38:42
+ * @Last Modified time: 2019-07-16 21:01:57
  */
 
 function change(text){
@@ -31,23 +31,11 @@ function selected(){
     var splfct = splfcts.options[fctindex].value;
     // alert(String(splfct));
     
-// {
-//     // d3.selectAll("#containerLineChart").remove()
-
-//     // var cvs = document.createElement('canvas');
-//     // cvs.setAttribute('id','containerLineChart');
-//     // cvs.setAttribute('width',300);
-//     // cvs.setAttribute('height',230);
-    
-//     // var d = document.getElementById("containerLineChart")
-//     // d.appendChild(cvs);
-       // creat();
-       // insert();
-// }
-    
     if(splrateconst == 100){
         tsnefilename = "data/oregonf_TSNE_5000.csv";
         heatmapfilename = "data/oregonf_TSNE_epanechnikov_id_x_y_kde.csv";
+
+        drawForce(force_fasterfilename);
     }
 
     else{
@@ -55,18 +43,28 @@ function selected(){
         tsnefilename = "data/sampling_kde_data/oregonf_"+String(splfct)+"_"+String(splrateconst)+"_kde.csv";
         //得到热力图文件名
         heatmapfilename = "data/sampling_kde_data/oregonf_"+String(splfct)+"_"+String(splrateconst)+"_kde.csv";
+        //得到力导图文件名
+        force_fasterfilename = "data/sampling_kde_data/oregonf_"+String(splfct)+"_"+String(splrateconst)+"_kde.csv";
+        
+        d3.select('#mid canvas').remove()
+        
+        forceflag = forceflag * -1;
+        scaleconst = scaleconst + splrateconst * 10 * forceflag;
+      //   drawForce(force_fasterfilename);
+
     }
 
     //画图之前先删掉原来的svg
     d3.select('#tsneNodes').remove()
     darwtsnenodes(tsnefilename);
     d3.select('#heatmap').remove();
-    d3.select('#right1').append("div").attr("id","heatmap").style("display","none");
+    d3.select('#right1').append("div")
+         .attr("id","heatmap").attr("style","display:none;position:absolute;");
 
     document.getElementById('cgetsneheatmap').innerHTML = 'Heatmap';
-    // d3.select('#cgetsneheatmap').innerHTML = "Heatmap";
-    // console.log(  d3.select('#cgetsneheatmap').innerHTML);
     drawheatmap(heatmapfilename);
+
+    drawForce(force_fasterfilename)
 
     //去掉原有的雷达图
     d3.selectAll("#areas").remove()
@@ -105,12 +103,7 @@ function selected(){
 
     document.getElementById('splnodes').innerHTML = 'Sampling Nodes:' + String(parseInt(splrateconst * 0.01 * 11174));
     document.getElementById('spledges').innerHTML = 'Sampling Edges:' + String(parseInt(splrateconst * 0.01 * 23410));
-    console.log("ok");
-
-    
-}
-
-function changesplrate()
-{      
    
+     console.log("ok");
+
 }
