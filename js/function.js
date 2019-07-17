@@ -2,7 +2,7 @@
  * @Author: ChenShan 
  * @Date: 2019-07-13 22:05:45 
  * @Last Modified by: ChenShan
- * @Last Modified time: 2019-07-16 21:01:57
+ * @Last Modified time: 2019-07-17 23:09:12
  */
 
 function change(text){
@@ -50,7 +50,6 @@ function selected(){
         
         forceflag = forceflag * -1;
         scaleconst = scaleconst + splrateconst * 10 * forceflag;
-      //   drawForce(force_fasterfilename);
 
     }
 
